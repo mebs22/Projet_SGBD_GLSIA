@@ -1,23 +1,15 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-# from testfile import openWindow
+from components.mainMenu import MenuBox
 
-# Creating window
-Win = Gtk.Window(title='Hotel Manager System')
+PROGRAM_NAME = "Hotel Manager"
 
-
-# Creating child elements
-Bty = Gtk.Button(label="Click me bitch")
-
-# Binding callbacks (event handlers)
+Win = Gtk.Window(title=PROGRAM_NAME)
 Win.connect("destroy", Gtk.main_quit)
-Bty.connect("clicked", lambda x: openWindow()) 
 
-# Binding elements
-Win.add(Bty)
+Win.add(MenuBox)
 
-# Loading window
-Win.show_all()
 Win.maximize()
+Win.show_all()
 Gtk.main()
