@@ -1,11 +1,7 @@
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
-import functions.mainMenuFuncitions as MMFs
+from gtk_imports import Gtk
+import functions.mainMenuFunctions as MMFs
+from components.constants import *
 
-# CONSTANTS
-DEFAULT_BUTTON_PADDING = 5
-DEFAULT_BOX_SPACING = 10
 
 # Creating Main Box
 MenuBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=DEFAULT_BOX_SPACING)
@@ -13,7 +9,7 @@ MenuBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=DEFAULT_BOX_SPAC
 # Creating Buttons
 GesHotelBtn = Gtk.Button(label="Gestion de l'hotel")
 
-ChambresCliBtn = Gtk.Button(label="Chambres")
+ChambresBtn = Gtk.Button(label="Chambres")
 
 ClisBtn = Gtk.Button(label="Clients")
 
@@ -29,11 +25,17 @@ QuitBtn = Gtk.Button(label="Quitter")
 
 # Binding callbacks
 QuitBtn.connect("clicked", Gtk.main_quit)
+GesHotelBtn.connect("clicked", lambda y: MMFs.loadComponent(MenuBox, GESTION_HOTEL))
+ChambresBtn.connect("clicked", lambda y: MMFs.loadComponent(MenuBox, CHAMBRES))
+ClisBtn.connect("clicked", lambda y: MMFs.loadComponent(MenuBox, CLIENTS))
+ReservationsBtn.connect("clicked", lambda y: MMFs.loadComponent(MenuBox, RESERVATIONS))
+FacturesBtn.connect("clicked", lambda y: MMFs.loadComponent(MenuBox, FACTURES))
+StatsBtn.connect("clicked", lambda y: MMFs.loadComponent(MenuBox, STATS))
+AideBtn.connect("clicked", MMFs.showHelp)
 
-
-# Stacking Buttons
+# Stacking Buttons/Elements
 MenuBox.pack_start(GesHotelBtn, True, True, DEFAULT_BUTTON_PADDING)
-MenuBox.pack_start(ChambresCliBtn, True, True, DEFAULT_BUTTON_PADDING)
+MenuBox.pack_start(ChambresBtn, True, True, DEFAULT_BUTTON_PADDING)
 MenuBox.pack_start(ClisBtn, True, True, DEFAULT_BUTTON_PADDING)
 MenuBox.pack_start(ReservationsBtn, True, True, DEFAULT_BUTTON_PADDING)
 MenuBox.pack_start(FacturesBtn, True, True, DEFAULT_BUTTON_PADDING)

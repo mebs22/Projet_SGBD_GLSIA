@@ -1,0 +1,4 @@
+### Next commit: "import balanced. submenus (1st level) layout done"
+
+- About Dialog
+- Create a main box with the header, and the app body, then eveytime the UI is updated, it relod only the body and not the whole conotianer + header
