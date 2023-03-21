@@ -8,13 +8,13 @@ ReservationsBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=DEFAULT_
 # Creating Buttons
 BUTTONS = [
     ListReservationsBtn,
-    CancelReservationsBtn,
     AddReservationsBtn,
+    CancelReservationsBtn,
     BackBtn
 ] = [
-    Gtk.Button(label="Liste des reservations"),
-    Gtk.Button(label="Annuler une reservation"),
+    Gtk.Button(label="Voir les reservations"),
     Gtk.Button(label="Ajouter une reservation"),
+    Gtk.Button(label="Annuler une reservation"),
     Gtk.Button(label="Retour"),
 ]
 

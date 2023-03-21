@@ -1,16 +1,12 @@
 from gtk_imports import Gtk
 from components.constants import *
 from components.stats import StatsBox
-from components.clients import ClientsBox
 from components.factures import FacturesBox
-from components.chambres import ChambresBox
-from components.gestionHotel import GesHotelBox
+# from components.chambres import ChambresBox
 from components.reservations import ReservationsBox
 
 COMPONENT_LIST = {
-    GESTION_HOTEL : GesHotelBox,
-    CHAMBRES : ChambresBox,
-    CLIENTS : ClientsBox,
+    # CHAMBRES : ChambresBox,
     RESERVATIONS : ReservationsBox,
     FACTURES : FacturesBox,
     STATS : StatsBox,
@@ -23,6 +19,7 @@ Aliquam et mi finibus, gravida libero dignissim, pretium nunc. In congue, velit 
 def loadComponent(element, boxType):
     # Get parent
     elementRoot = element.get_parent()
+    # print(f"element {element} \nParent {elementRoot}")
 
     # Remove the current element
     elementRoot.remove(element)

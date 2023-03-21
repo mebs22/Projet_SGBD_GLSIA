@@ -1,35 +1,36 @@
 from gtk_imports import Gtk
 from components.constants import DEFAULT_BOX_SPACING, DEFAULT_BUTTON_PADDING
+from mainFunctions import insertComponentName
+# from mainFunctions import goBack
+
+def generateChambres(stack, pageTitle, goBack):
+    # Creating container
+    ChambresBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=DEFAULT_BOX_SPACING)
+
+    # Generating Component name
+    ComponentName = Gtk.Label()
+    ComponentName.set_markup( insertComponentName("LISTE DES CHAMBRES") )
+    ComponentName.set_size_request(-1, 200)
 
 
-# Creating container
-ChambresBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=DEFAULT_BOX_SPACING)
+    # Creating Buttons
+    BUTTONS = [
+        ListFreeRoomsBtn,
+        ListOccupiedRoomsBtn,
+        BackBtn
+    ] = [
+        Gtk.Button(label="Chambres libres"),
+        Gtk.Button(label="Chambres occupées"),
+        Gtk.Button(label="Retour"),
+    ]
 
-# Creating Buttons
-BUTTONS = [
-    ListRoomsBtn,
-    ListFreeRoomsBtn,
-    ListOccupiedRoomsBtn,
-    ListReservedRoomsBtn,
-    EditRoomClassBtn,
-    EcoRooms,
-    StandingRooms,
-    BusinessRooms,
-    BackBtn
-] = [
-    Gtk.Button(label="Liste des chambres"),
-    Gtk.Button(label="Liste des chambres libres"),
-    Gtk.Button(label="Liste des chambres occupées"),
-    Gtk.Button(label="Liste des chambres reservées"),
-    Gtk.Button(label="Modifier classe d'une chambre"),
-    Gtk.Button(label="Chambres: Economiques"),
-    Gtk.Button(label="Chambres: Standing"),
-    Gtk.Button(label="Chambres: Affaires"),
-    Gtk.Button(label="Retour"),
-]
+    # Binding callbacks
+    BUTTONS[len(BUTTONS)-1].connect("clicked", lambda y: goBack(stack))
 
-# Binding callbacks
+    # Stacking elements
+    # ChambresBox.pack_start(pageTitle, True, True, DEFAULT_BOX_SPACING)
+    ChambresBox.pack_start(ComponentName, True, True, DEFAULT_BUTTON_PADDING)
+    for BTN in BUTTONS:
+        ChambresBox.pack_start(BTN, True, True, DEFAULT_BUTTON_PADDING)
 
-# Stacking elements
-for BTN in BUTTONS:
-    ChambresBox.pack_start(BTN, True, True, DEFAULT_BUTTON_PADDING)
+    return ChambresBox
