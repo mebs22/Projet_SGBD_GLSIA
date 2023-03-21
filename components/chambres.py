@@ -1,7 +1,6 @@
 from gtk_imports import Gtk
 from components.constants import *
 from mainFunctions import insertComponentName
-
 from mainFunctions import *
 
 def generateChambres(stack):
@@ -36,3 +35,52 @@ def generateChambres(stack):
         ChambresBox.pack_start(BTN, True, True, DEFAULT_BUTTON_PADDING)
 
     return ChambresBox
+
+def generateChambresLibres(stack): 
+    # Creating container
+    Container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=DEFAULT_BOX_SPACING)
+
+    # Creating elements
+    BackBtn = Gtk.Button(label="Retour")
+
+    # Generating Component name
+    ComponentName = Gtk.Label()
+    ComponentName.set_markup( insertComponentName("CHAMBRES LIBRES") )
+    ComponentName.set_size_request(-1, 200)
+
+    
+    # Binding callbacks
+    BackBtn.connect("clicked", lambda y: changePage(stack, CHAMBRES))
+
+
+
+    # Stacking elements
+    Container.pack_start(ComponentName, True, True, DEFAULT_BUTTON_PADDING)
+    Container.pack_start(BackBtn, True, True, DEFAULT_BUTTON_PADDING)
+
+    return Container
+
+
+def generateChambresOccupees(stack): 
+    # Creating container
+    Container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=DEFAULT_BOX_SPACING)
+
+    # Creating elements
+    BackBtn = Gtk.Button(label="Retour")
+
+    # Generating Component name
+    ComponentName = Gtk.Label()
+    ComponentName.set_markup( insertComponentName("CHAMBRES OCCUPEES") )
+    ComponentName.set_size_request(-1, 200)
+
+    
+    # Binding callbacks
+    BackBtn.connect("clicked", lambda y: changePage(stack, CHAMBRES))
+
+
+
+    # Stacking elements
+    Container.pack_start(ComponentName, True, True, DEFAULT_BUTTON_PADDING)
+    Container.pack_start(BackBtn, True, True, DEFAULT_BUTTON_PADDING)
+
+    return Container

@@ -1,4 +1,4 @@
-TEXT_SIZE = 300
+TEXT_SIZE = 220
 from components.constants import MAIN
 
 # Stack functions
