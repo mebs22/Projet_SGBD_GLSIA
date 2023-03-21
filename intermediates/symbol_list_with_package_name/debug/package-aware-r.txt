@@ -1,4 +1,4 @@
-com.tekartik.sqflite
+io.flutter.plugins.pathprovider
 attr activityAction
 attr activityName
 attr alpha
