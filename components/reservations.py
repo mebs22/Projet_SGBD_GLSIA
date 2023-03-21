@@ -76,7 +76,6 @@ def generateVoirReservations(stack):
         print("Erreur de chargement des donees de reservation")
         fetched_data = []
 
-    print(fetched_data)
 
     for i, col_title in enumerate(column_names):
         render = Gtk.CellRendererText()
@@ -85,8 +84,11 @@ def generateVoirReservations(stack):
 
     liststore = Gtk.ListStore(str, str, str)
 
-    for item in fetched_data:
-        liststore.append([str(item["id"]), item["title"], item["body"][0]])
+    try:
+        for item in fetched_data:
+            liststore.append([str(item["id"]), item["title"], item["body"][0]])
+    except:
+        liststore.append([])
     
     tree_view.set_model(liststore)
 
