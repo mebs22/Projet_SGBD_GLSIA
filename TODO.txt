@@ -1,4 +1,6 @@
-### Next commit: "Adjusted UI. Added a stack for navigation"
+### Next commit: "centered components"
 
-- About Dialog
-- Create a main box with the header, and the app body, then eveytime the UI is updated, it relod only the body and not the whole conotianer + header
++ Change color of quit/cancel Buttons
+- Center elements
++ Add padding to buttons
+

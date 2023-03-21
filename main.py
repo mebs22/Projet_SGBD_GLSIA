@@ -49,8 +49,16 @@ stack.add_titled(Factures, FACTURES, "Factures")
 stack.add_titled(Stats, STATS, "Stats")
 
 
+# Create a box container and add the stack to it
+box = Gtk.Box()
+box.set_homogeneous(True)
+box.set_halign(Gtk.Align.CENTER)
+box.set_valign(Gtk.Align.START)
+box.pack_start(stack, True, True, 0)
+
+
 # Rendering
-Win.add(stack)
+Win.add(box)
 Win.maximize()
 Win.show_all()
 

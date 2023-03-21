@@ -1,3 +1,10 @@
+# API Infos
+API_URL = 'https://jsonplaceholder.typicode.com'
+REQUEST_HEADERS = {"Content-Type": "application/json"}
+
+# ENDPOINTS
+RESERVATION = 'reservation'
+
 DEFAULT_BUTTON_PADDING = 2
 DEFAULT_BOX_SPACING = 10
 
