@@ -1,9 +1,10 @@
 from gtk_imports import Gtk
-from components.constants import DEFAULT_BOX_SPACING, DEFAULT_BUTTON_PADDING
+from components.constants import *
 from mainFunctions import insertComponentName
-# from mainFunctions import goBack
 
-def generateChambres(stack, pageTitle, goBack):
+from mainFunctions import *
+
+def generateChambres(stack):
     # Creating container
     ChambresBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=DEFAULT_BOX_SPACING)
 
@@ -25,10 +26,11 @@ def generateChambres(stack, pageTitle, goBack):
     ]
 
     # Binding callbacks
-    BUTTONS[len(BUTTONS)-1].connect("clicked", lambda y: goBack(stack))
+    BUTTONS[0].connect("clicked", lambda y: changePage(stack, CHAMBRE_LIBRE))
+    BUTTONS[1].connect("clicked", lambda y: changePage(stack, CHAMBRE_OCCUPEE))
+    BUTTONS[2].connect("clicked", lambda y: goBack(stack))
 
     # Stacking elements
-    # ChambresBox.pack_start(pageTitle, True, True, DEFAULT_BOX_SPACING)
     ChambresBox.pack_start(ComponentName, True, True, DEFAULT_BUTTON_PADDING)
     for BTN in BUTTONS:
         ChambresBox.pack_start(BTN, True, True, DEFAULT_BUTTON_PADDING)

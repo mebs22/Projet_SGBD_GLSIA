@@ -1,5 +1,8 @@
 from gtk_imports import Gtk
-from components.mainMenu import MenuBox
+from components.constants import *
+from components.mainMenu import generateMenu
+from components.chambres import generateChambres
+from mainFunctions import *
 
 PROGRAM_NAME = "Hotel Manager"
 
@@ -7,20 +10,27 @@ Win = Gtk.Window(title=PROGRAM_NAME)
 Win.connect("destroy", Gtk.main_quit)
 
 
-# Geneating grid
-AppGrid = Gtk.Grid()
 
-# Wrapping for alignment
-Aligner = Gtk.Alignment(halign=Gtk.Align.CENTER, valign=Gtk.Align.START)
-Aligner.add(AppGrid)
+# Geneating and adding container
+# AppBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+# Win.add(AppBox)
 
-# Adding elements to gridAppName
-AppGrid.attach(MenuBox, 0, 1, 1, 1)
+# Creating stack
+stack = Gtk.Stack()
+stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
 
-# Adding elements to main window
-Win.add(Aligner)
+# Creating pages
+MainMenu = generateMenu(stack)
+Chambres = generateChambres(stack)
+
+# Adding pages to stack
+stack.add_titled(MainMenu, MAIN, "Menu Principal")
+stack.add_titled(Chambres, CHAMBRES, "Liste des chambres")
+
 
 # Rendering
+Win.add(stack)
 Win.maximize()
 Win.show_all()
+
 Gtk.main()
