@@ -1,6 +1,7 @@
 # gestion_hotel
 
 A new Flutter project.
+Les fichiers sources se trouvent dans lib
 
 ## Getting Started
 
